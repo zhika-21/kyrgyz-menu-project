@@ -1,5 +1,6 @@
 import React from "react";
 import OrderButton from "./orderBtn";
+import "./Menu.css"
 
 export const Menu = ({data, setOrder, setTotal}) => {
   const {id, img, title, price, desc} = data
