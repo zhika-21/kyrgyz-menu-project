@@ -17,14 +17,6 @@ export const Menu = ({data, setOrder, setTotal}) => {
           <OrderButton data={data} setOrder={setOrder} setTotal={setTotal} />
         </div>
       </article>
-
-
-
-
-
-
-
-
     </div>
   );
 };
