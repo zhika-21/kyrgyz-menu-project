@@ -7,6 +7,7 @@ import RemoveIcon from '@mui/icons-material/Remove';
 const OrderButton = ({data, setOrder, setTotal}) => {
   const [count, setCount] = useState(0)
   const {title, price, img} = data
+  //Millana make demo
   return (
     <div>
       <Button onClick={() => setCount(count > 1 ? count - 1 : 0)}><RemoveIcon /></Button>
