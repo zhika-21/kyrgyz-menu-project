@@ -3,8 +3,8 @@ import Categories from "./components/Categories";
 import axios from "axios";
 import Menu from './components/Menu'
 import ModalPage from "./components/ModalPage";
-import SearchInput from './components/search'
-import logo from './image/loading-food.gif'
+import logo from './image/loading-food.gif';
+import {FaSearch} from "react-icons/fa";
 
 
 
@@ -16,6 +16,7 @@ function App() {
   const [order, setOrder] = useState([])
   const [total, setTotal] = useState([])
   const [search, setSearch] = useState('')
+  const [inputSearch, setInputSearch] = useState([])
 
 
   const getData = async () => {
@@ -29,10 +30,8 @@ function App() {
   }
 
   useEffect(() => {
-
     getData()
     setIsLoading(false)
-
   }, [])
 
   useEffect(() => {
@@ -40,42 +39,66 @@ function App() {
     setFilteredFoodList(filtered);
   }, [selectedCategory])
 
-
-
-
   const categoryList = ["all", ...new Set(menuItems.map((item) => item.category))];
 
+  useEffect(() => {
+    const searchFilter = filteredFoodList.filter(el => {
+      if (search == "") {
+        return el
+      } else if (el.title.toLowerCase().includes(search.toLowerCase())) {
+        return el
+      }
+    })
+    setInputSearch(searchFilter)
+  }, [search])
+
+  //console.log(inputSearch)
 
   return isLoading ?
     <div className="loading-page">
       <h3>Page is loading</h3>
-      {/*<CircularProgress />*/}
       <img src={logo} alt='logo-food' style={{width: '400px', height: '400px'}} />
-
     </div>
     :
     (
       <main>
+
+        <div className="searchDiv">
+          <form onSubmit={(e) => e.preventDefault()} className="formInput">
+            <FaSearch className="icon" />
+            <input search={search} onChange={(e) => setSearch(e.target.value)} className="input-search" placeholder="search..." />
+          </form>
+        </div>
+
         <section className="menu section">
           <div className="title">
             <h2>our menu</h2>
+
+
+
             <ModalPage order={order} total={total} />
             <div className="underline"></div>
           </div>
 
           <Categories categoryList={categoryList} setSelectedCategory={setSelectedCategory} />
 
-          <div className="searchInput">
-            <SearchInput search={search} onChange={(e) => setSearch(e.target.value)} data={menuItems} />
-
-          </div>
 
 
           <div className="box-grid">
-            {filteredFoodList.map(el =>
+            {
+              search.length > 1 ? (
+                inputSearch.map(el =>
 
-              <Menu data={el} setOrder={setOrder} setTotal={setTotal} />
-            )}
+                  <Menu data={el} setOrder={setOrder} setTotal={setTotal} />
+                )
+
+              ) : (
+                filteredFoodList.map(el =>
+
+                  <Menu data={el} setOrder={setOrder} setTotal={setTotal} />
+                )
+              )
+            }
           </div>
 
 
