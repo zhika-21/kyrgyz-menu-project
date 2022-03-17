@@ -72,7 +72,7 @@ function App() {
 
         <section className="menu section">
           <div className="title">
-            <h2>our menu</h2>
+            <h2>Our Kyrgyz menu</h2>
 
 
 
