@@ -6,15 +6,11 @@ import Menu from './components/Menu'
 import ModalPage from "./components/ModalPage";
 import logo from './image/loading-food.gif';
 import { FaSearch } from "react-icons/fa";
-import { useSpeechContext } from "@speechly/react-client";
-import { PushToTalkButtonContainer, PushToTalkButton, ErrorPanel } from "@speechly/react-ui";
 
 
 
 function App() {
   const { menuItems, setMenuItems, selectedCategory, setSelectedCategory, filteredFoodList, setFilteredFoodList, isLoading, setIsLoading, search, setSearch, inputSearch, setInputSearch } = useContext(ConstApi)
-  const { segment } = useSpeechContext()
-
 
   const getData = async () => {
     try {
@@ -53,19 +49,6 @@ function App() {
 
   //console.log(inputSearch)
 
-
-  useEffect(() => {
-    if (segment) {
-      segment.entities.forEach((element) => {
-        if (element.type === "search") {
-          setInputSearch(prev => ({ ...prev, value: element.value }))
-        } else {
-          setInputSearch(prev => ({ ...prev, type: element.value }))
-        }
-      })
-    }
-  }, [segment])
-
   return isLoading ?
     <div className="loading-page">
       <h3>Page is loading</h3>
@@ -76,9 +59,7 @@ function App() {
       <main>
         <header>
           <div className="basketIcon">
-
             <ModalPage />
-
           </div>
 
           <div className="searchDiv">
@@ -87,14 +68,6 @@ function App() {
               <input search={search} onChange={(e) => setSearch(e.target.value)} className="input-search" placeholder="search..." />
             </form>
           </div>
-
-
-          {/*<Box>
-            <PushToTalkButtonContainer>
-              <PushToTalkButton />
-              <ErrorPanel />
-            </PushToTalkButtonContainer>
-          </Box>*/}
         </header>
 
         <section className="menu-section">
@@ -109,27 +82,17 @@ function App() {
           <div className="box-grid">
             {
               search.length > 1 ? (
-
                 inputSearch.map(el =>
-
                   <Menu data={el} />
                 )
-
               ) : (
                 filteredFoodList.map(el =>
-
                   <Menu data={el} />
                 )
               )
             }
           </div>
         </section>
-        <>
-          <PushToTalkButtonContainer>
-            <PushToTalkButton />
-            <ErrorPanel />
-          </PushToTalkButtonContainer>
-        </>
       </main>
     );
 }
