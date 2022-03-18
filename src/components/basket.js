@@ -20,9 +20,10 @@ const Basket = () => {
       {order.length === "" &&
         <div> Basket is empty</div>}
       {order.map(el =>
-      (<div key={el.id}><h4><u>{el.title}</u></h4>
-        <h4>{el.count * el.price}</h4>
-        <h4> qty: {el.count}</h4>
+      (<div className="box" key={el.id}>
+        <h4 className="titleF" ><u>{el.title}</u></h4>
+        <h4 className="titles"> Price: {el.count * el.price}</h4>
+        <h4 className="titles"> qty: {el.count}</h4>
       </div>
 
       ))}

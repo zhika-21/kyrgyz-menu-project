@@ -6,6 +6,7 @@ import { GeneralProvider } from './context/context'
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Contact from './pages/Contact/Contact';
 import Footer from "./pages/Footer/Footer"
+import Carusel from "./pages/Carousel/Carusel"
 
 ReactDOM.render(
   <React.StrictMode>
@@ -14,7 +15,8 @@ ReactDOM.render(
         <Routes>
           <Route path="/" element={<App />} />
           <Route path="/Contact" element={<Contact />} />
-          <Route path="/Footer" element={<Footer />} />
+          <Route path="/About" element={<Footer />} />
+          <Route path="/Carusel" element={<Carusel />} />
         </Routes>
       </BrowserRouter>
     </GeneralProvider>

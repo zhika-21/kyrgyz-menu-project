@@ -1,5 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap");
-
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:ital@1&display=swap');
 :root {
 	--clr-primary-1: hsl(205, 86%, 17%);
 	--clr-primary-2: hsl(205, 77%, 27%);
@@ -254,6 +254,7 @@ header {
 .textOrder {
 	margin-bottom: 10px;
 	font-family: "Poppins";
+	background-color: antiquewhite;
 }
 
 @media screen and (min-width: 768px) {
@@ -292,4 +293,17 @@ header {
 	border: 2px solid #000;
 	box-shadow: 24;
 	padding: 4;
+}
+.titles{
+	font-size: 20px;
+	margin:5px;
+}
+.titleF{
+	font-size: 20px;
+	margin:5px;
+	font-family: 'Work Sans', sans-serif;
+}
+.box{
+	border:1px solid black;
+	margin: 3px
 }
