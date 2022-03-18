@@ -1,7 +1,9 @@
-import React from "react";
+import {useContext} from 'react'
 import OrderButton from "./orderBtn";
+import {ConstApi} from "../context/context"
 
-export const Menu = ({data, setOrder, setTotal}) => {
+export const Menu = ({data}) => {
+  const {setOrder, setTotal} = useContext(ConstApi)
   const {id, img, title, price, desc} = data
   return (
     <div className="section-center">
@@ -17,14 +19,6 @@ export const Menu = ({data, setOrder, setTotal}) => {
           <OrderButton data={data} setOrder={setOrder} setTotal={setTotal} />
         </div>
       </article>
-
-
-
-
-
-
-
-
     </div>
   );
 };

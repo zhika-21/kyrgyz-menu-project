@@ -1,12 +1,6 @@
-/*
-=============== 
-Variables
-===============
-*/
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap");
-
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:ital@1&display=swap');
 :root {
-	/* dark shades of primary color*/
 	--clr-primary-1: hsl(205, 86%, 17%);
 	--clr-primary-2: hsl(205, 77%, 27%);
 	--clr-primary-3: hsl(205, 72%, 37%);
@@ -31,14 +25,6 @@ Variables
 	--clr-grey-8: hsl(210, 31%, 80%);
 	--clr-grey-9: hsl(212, 33%, 89%);
 	--clr-grey-10: hsl(210, 36%, 96%);
-	--clr-white: #fff;
-	--clr-gold: #c59d5f;
-
-	--clr-red-dark: hsl(360, 67%, 44%);
-	--clr-red-light: hsl(360, 71%, 66%);
-	--clr-green-dark: hsl(125, 67%, 44%);
-	--clr-green-light: hsl(125, 71%, 66%);
-	--clr-black: #222;
 	--transition: all 0.3s linear;
 	--spacing: 0.1rem;
 	--radius: 0.25rem;
@@ -47,11 +33,6 @@ Variables
 	--max-width: 1170px;
 	--fixed-width: 620px;
 }
-/*
-=============== 
-Global Styles
-===============
-*/
 
 *,
 ::after,
@@ -61,27 +42,20 @@ Global Styles
 	box-sizing: border-box;
 }
 body {
-	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
-		Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+	font-family: "Poppins", sans-serif;
 	background-image: url(https://corelsite.ru/wp-content/uploads/2019/09/%D0%BE%D1%80%D0%BD%D0%B0%D0%BC%D0%B5%D0%BD%D1%82-1.jpg),
-		linear-gradient(45deg, #f7f1ed, #cad0d4);
-	background-blend-mode: overlay;
+		linear-gradient(50deg, #c8d9ec, #dfe4e7);
+	background-blend-mode: screen;
 	color: var(--clr-grey-1);
 	line-height: 1.5;
-	font-size: 0.875rem;
-	font-family: "Poppins", sans-serif;
+	margin: 0;
+	padding: 0;
 }
 
-main {
-	background: rgba(246, 248, 250, 0.5);
-}
-ul {
-	list-style-type: none;
-}
-a {
-	text-decoration: none;
-}
-h1,
+/*main {
+	background: rgba(206, 208, 209, 0.5);
+}*/
+*/ h1,
 h2,
 h3,
 h4 {
@@ -158,21 +132,24 @@ Menu
 	text-align: center;
 	margin-bottom: 2rem;
 }
+header {
+	display: flex;
+	justify-content: space-between;
+}
+.basketIcon {
+	padding-left: 2rem;
+	padding-top: 2rem;
+}
 
-.underline {
-	width: 15rem;
-	height: 0.25rem;
-	background: var(--clr-primary-3);
-	margin-left: auto;
-	margin-right: auto;
-}
 .searchDiv {
-	text-align: right;
+	margin-top: 20px;
+	padding: 0;
 }
+
 .icon {
 	position: absolute;
-	right: 17.5rem;
-	top: 2.2rem;
+	right: 16rem;
+	top: 3.5rem;
 	color: white;
 }
 .input-search {
@@ -220,9 +197,11 @@ Menu
 	gap: 3rem 2rem;
 	justify-items: center;
 }
+
 .box-grid {
 	display: grid;
 	grid-template-columns: 37.5rem 37.5rem;
+	margin-left: 4rem;
 }
 .menu-item {
 	display: grid;
@@ -253,6 +232,29 @@ Menu
 	padding-top: 1rem;
 	font-weight: 500;
 	color: #3e3c5a;
+}
+.order-text {
+	color: rgb(145, 44, 170);
+}
+.btn-basket {
+	padding: 5px 20px;
+	margin: 40px 100px 0 100px;
+	border: none;
+	font-size: 1.2rem;
+	font-family: "Poppins";
+	background-color: rgb(145, 44, 170);
+	color: white;
+	border-radius: 10px;
+}
+.text-order {
+	margin-bottom: 40px;
+	font-family: "Poppins";
+	text-align: center;
+}
+.textOrder {
+	margin-bottom: 10px;
+	font-family: "Poppins";
+	background-color: antiquewhite;
 }
 
 @media screen and (min-width: 768px) {
@@ -291,4 +293,17 @@ Menu
 	border: 2px solid #000;
 	box-shadow: 24;
 	padding: 4;
+}
+.titles{
+	font-size: 20px;
+	margin:5px;
+}
+.titleF{
+	font-size: 20px;
+	margin:5px;
+	font-family: 'Work Sans', sans-serif;
+}
+.box{
+	border:1px solid black;
+	margin: 3px
 }

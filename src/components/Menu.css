@@ -1,0 +1,26 @@
+
+
+/*---------Media Queries(MEDIUM DEVICES)*/
+@media screen and (max-width: 1024px){
+    .section-center{
+        grid-template-columns: 1fr;
+    }
+    .section-center>div{
+        width: 80%;
+        padding: 2rem;
+        margin: 0 auto;
+    }
+    .experience__content{
+        padding: 1rem;
+    }
+}
+/*---------Media Queries(SMALL DEVICES)*/
+@media screen and (max-width: 600px){
+.section-center{
+    gap: 1rem;
+}
+.section-center>div{
+width: 100%;
+padding: 2rem 1rem;
+}
+} 
