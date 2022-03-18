@@ -2,22 +2,17 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import { GeneralProvider } from './context/context'
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Contact from './pages/Contact/Contact';
-import Footer from "./pages/Footer/Footer"
-import Carusel from "./pages/Carousel/Carusel"
+import {GeneralProvider} from './context/context'
+import {BrowserRouter} from 'react-router-dom'
+
+
+
 
 ReactDOM.render(
   <React.StrictMode>
     <GeneralProvider>
       <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<App />} />
-          <Route path="/Contact" element={<Contact />} />
-          <Route path="/About" element={<Footer />} />
-          <Route path="/Carusel" element={<Carusel />} />
-        </Routes>
+        <App />
       </BrowserRouter>
     </GeneralProvider>
   </React.StrictMode >,

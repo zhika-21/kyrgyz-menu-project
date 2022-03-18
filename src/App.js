@@ -1,16 +1,26 @@
-import React, { useEffect, useContext } from "react";
-import { ConstApi } from './context/context'
+import React, {useEffect, useContext} from "react";
+import {ConstApi} from './context/context'
 import Categories from "./components/Categories";
 import axios from "axios";
 import Menu from './components/Menu'
 import ModalPage from "./components/ModalPage";
 import logo from './image/loading-food.gif';
-import { FaSearch } from "react-icons/fa";
+import {FaSearch} from "react-icons/fa";
+import SpeechRecognition from "react-speech-recognition";
+import {Routes, Route} from "react-router-dom";
+import Contact from './pages/Contact/Contact';
+import Footer from "./pages/Footer/Footer"
+import Carusel from "./pages/Carousel/Carusel"
+
 
 
 
 function App() {
-  const { menuItems, setMenuItems, selectedCategory, setSelectedCategory, filteredFoodList, setFilteredFoodList, isLoading, setIsLoading, search, setSearch, inputSearch, setInputSearch } = useContext(ConstApi)
+  const {menuItems, setMenuItems, selectedCategory, setSelectedCategory, filteredFoodList, setFilteredFoodList, isLoading, setIsLoading, search, setSearch, inputSearch, setInputSearch, transcript, redirect} = useContext(ConstApi)
+
+  ////////////>>>>>>>>>voice
+
+
 
   const getData = async () => {
     try {
@@ -52,11 +62,29 @@ function App() {
   return isLoading ?
     <div className="loading-page">
       <h3>Page is loading</h3>
-      <img src={logo} alt='logo-food' style={{ width: '400px', height: '400px' }} />
+      <img src={logo} alt='logo-food' style={{width: '400px', height: '400px'}} />
     </div>
     :
     (
-      <main>
+      <main >
+
+
+        <Routes>
+          <Route path="/Home" element={<App />} />
+          <Route path="/Contact" element={<Contact />} />
+          <Route path="/About" element={<Footer />} />
+          <Route path="/Carusel" element={<Carusel />} />
+        </Routes>
+        {redirect}
+
+        <div>
+          <p id="transcript">Transcript: {transcript}</p>
+          <button onClick={SpeechRecognition.startListening}>Start</button>
+
+        </div>
+
+
+
         <header>
           <div className="basketIcon">
             <ModalPage />
@@ -93,6 +121,10 @@ function App() {
             }
           </div>
         </section>
+
+
+
+
       </main>
     );
 }

@@ -1,4 +1,8 @@
 import { createContext, useState } from "react";
+import { Navigate } from "react-router-dom";
+import SpeechRecognition, {
+	useSpeechRecognition,
+} from "react-speech-recognition";
 
 export const ConstApi = createContext([]);
 
@@ -11,6 +15,7 @@ export const GeneralProvider = ({ children }) => {
 	const [total, setTotal] = useState([]);
 	const [search, setSearch] = useState("");
 	const [inputSearch, setInputSearch] = useState([]);
+	const [redirectUrl, setRedirectUrl] = useState("");
 	const [open, setOpen] = useState(false);
 	const handleOpen = () => setOpen(true);
 
@@ -29,6 +34,36 @@ export const GeneralProvider = ({ children }) => {
 		boxShadow: 24,
 		p: 4,
 	};
+
+	const commands = [
+		{
+			command: ["Go to * page", "Go to *", "Open * page", "Open *"],
+			callback: (redirectPage) => setRedirectUrl(redirectPage),
+		},
+	];
+
+	const { transcript } = useSpeechRecognition({ commands });
+	const pages = ["home", "about", "carusel", "contact"];
+	const urls = {
+		home: "/",
+		about: "/About",
+		carusel: "/Carusel",
+		contact: "/Contact",
+	};
+	if (!SpeechRecognition.browserSupportsSpeechRecognition()) {
+		return null;
+	}
+
+	let redirect = "";
+
+	if (redirectUrl) {
+		if (pages.includes(redirectUrl)) {
+			redirect = <Navigate to={urls[redirectUrl]} />;
+		} else {
+			redirect = <p>Could not find page: {redirectUrl}</p>;
+		}
+	}
+
 	let data = {
 		menuItems: menuItems,
 		setMenuItems: setMenuItems,
@@ -51,6 +86,12 @@ export const GeneralProvider = ({ children }) => {
 		handleOpen: handleOpen,
 		handleClose: handleClose,
 		style: style,
+		transcript: transcript,
+		commands: commands,
+		urls: urls,
+		pages: pages,
+		redirectUrl: redirectUrl,
+		redirect: redirect,
 	};
 
 	return <ConstApi.Provider value={data}>{children}</ConstApi.Provider>;

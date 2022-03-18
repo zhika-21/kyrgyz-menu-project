@@ -1,12 +1,13 @@
-import React from 'react'
 import "./Contact.css"
 import {HiOutlineMail} from "react-icons/hi"
 import {FaFacebookMessenger} from "react-icons/fa"
 import {BsWhatsapp} from "react-icons/bs"
-import  { useRef } from 'react';
-// import emailjs from "emailjs-com"
+import {useRef, useContext} from 'react';
+import SpeechRecognition from "react-speech-recognition";
+import {ConstApi} from '../../context/context'
 
 const Contact = () => {
+  const {transcript} = useContext(ConstApi)
   const form = useRef();
   const sendEmail = (e) => {
     e.preventDefault();
@@ -15,40 +16,46 @@ const Contact = () => {
     e.target.reset()
   };
   return (
-  <section  id="contact">
-    <h5>Get Your Food</h5>
-    <h2>Contact Us</h2>
+    <section id="contact">
+      <h5>Get Your Food</h5>
+      <h2>Contact Us</h2>
 
-    <div className="container contact__container">
-      <div className="contact__options">
-        <article className='contact__option'>
-     < HiOutlineMail className='contact__option-icon'/>
-        <h4>Email</h4>
-        <h5>zsultanova03@gmail.com</h5>
-        <a href="mailto:zsultanova03@gmail.com" target="_blank">Send a message</a>
-        </article>
-        <article className='contact__option'>
-     < FaFacebookMessenger className='contact__option-icon' />
-        <h4>Messenger</h4>
-        <h5></h5>
-        <a href="https://m.me/zhyldyz.sultanova" target="_blank">Send a message</a>
-        </article>
-        <article className='contact__option'>
-     < BsWhatsapp className='contact__option-icon'/>
-        <h4>WhapsApp</h4>
-        <h5>+34697655783</h5>
-        <a href="https://api.whatsapp.com/send?phone=+34697655783" target="_blank">Send a message</a>
-        </article>
+      <div>
+        <p id="transcript">Transcript: {transcript}</p>
+        <button onClick={SpeechRecognition.startListening}>Start</button>
+
       </div>
-      {/*END OF CONTACT OPTIONS*/}
-      <form ref={form} onSubmit={sendEmail}>
-        <input type="text" name='name' placeholder='Your Full Name' required />
-        <input type="email" name='email' placeholder='Your Email' required />
-        <textarea name="message" rows="7" placeholder='Leave your comment' required></textarea>
-        <button type='submit' className='btn btn-primary'>Send a comment</button>
-        
-      </form>
-    </div>
+
+      <div className="container contact__container">
+        <div className="contact__options">
+          <article className='contact__option'>
+            < HiOutlineMail className='contact__option-icon' />
+            <h4>Email</h4>
+            <h5>zsultanova03@gmail.com</h5>
+            <a href="mailto:zsultanova03@gmail.com" target="_blank">Send a message</a>
+          </article>
+          <article className='contact__option'>
+            < FaFacebookMessenger className='contact__option-icon' />
+            <h4>Messenger</h4>
+            <h5></h5>
+            <a href="https://m.me/zhyldyz.sultanova" target="_blank">Send a message</a>
+          </article>
+          <article className='contact__option'>
+            < BsWhatsapp className='contact__option-icon' />
+            <h4>WhapsApp</h4>
+            <h5>+34697655783</h5>
+            <a href="https://api.whatsapp.com/send?phone=+34697655783" target="_blank">Send a message</a>
+          </article>
+        </div>
+        {/*END OF CONTACT OPTIONS*/}
+        <form ref={form} onSubmit={sendEmail}>
+          <input type="text" name='name' placeholder='Your Full Name' required />
+          <input type="email" name='email' placeholder='Your Email' required />
+          <textarea name="message" rows="7" placeholder='Leave your comment' required></textarea>
+          <button type='submit' className='btn btn-primary'>Send a comment</button>
+
+        </form>
+      </div>
     </section>
   )
 }
