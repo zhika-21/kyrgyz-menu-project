@@ -5,6 +5,8 @@ import Menu from './components/Menu'
 import ModalPage from "./components/ModalPage";
 import logo from './image/loading-food.gif';
 import {FaSearch} from "react-icons/fa";
+import Contact from "./components/Contact/Contact"
+import Footer from "./components/Footer/Footer";
 
 
 
@@ -72,7 +74,7 @@ function App() {
 
         <section className="menu section">
           <div className="title">
-            <h2>Our-Kyrgyz-Menu</h2>
+            <h2>Seytech Restaurant Menu</h2>
 
 
 
@@ -100,6 +102,8 @@ function App() {
               )
             }
           </div>
+          <Contact />
+          <Footer />
 
 
         </section>
