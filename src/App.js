@@ -64,7 +64,6 @@ function App() {
     :
     (
       <main>
-
         <div className="searchDiv">
           <form onSubmit={(e) => e.preventDefault()} className="formInput">
             <FaSearch className="icon" />
