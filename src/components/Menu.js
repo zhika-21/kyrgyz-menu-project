@@ -1,8 +1,9 @@
-import React from "react";
+import {useContext} from 'react'
 import OrderButton from "./orderBtn";
-import "./Menu.css"
+import {ConstApi} from "../context/context"
 
-export const Menu = ({data, setOrder, setTotal}) => {
+export const Menu = ({data}) => {
+  const {setOrder, setTotal} = useContext(ConstApi)
   const {id, img, title, price, desc} = data
   return (
     <div className="section-center">
