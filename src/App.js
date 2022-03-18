@@ -1,21 +1,19 @@
-import React, {useEffect, useContext} from "react";
-import {ConstApi} from './context/context'
+import React, { useEffect, useContext } from "react";
+import { ConstApi } from './context/context'
 import Categories from "./components/Categories";
 import axios from "axios";
 import Menu from './components/Menu'
 import ModalPage from "./components/ModalPage";
 import logo from './image/loading-food.gif';
-import {FaSearch} from "react-icons/fa";
-import {useSpeechContext} from "@speechly/react-client";
-import {PushToTalkButtonContainer, PushToTalkButton, ErrorPanel} from "@speechly/react-ui";
-
-
+import { FaSearch } from "react-icons/fa";
+import { useSpeechContext } from "@speechly/react-client";
+import { PushToTalkButtonContainer, PushToTalkButton, ErrorPanel } from "@speechly/react-ui";
 
 
 
 function App() {
-  const {menuItems, setMenuItems, selectedCategory, setSelectedCategory, filteredFoodList, setFilteredFoodList, isLoading, setIsLoading, search, setSearch, inputSearch, setInputSearch} = useContext(ConstApi)
-  const {segment} = useSpeechContext()
+  const { menuItems, setMenuItems, selectedCategory, setSelectedCategory, filteredFoodList, setFilteredFoodList, isLoading, setIsLoading, search, setSearch, inputSearch, setInputSearch } = useContext(ConstApi)
+  const { segment } = useSpeechContext()
 
 
   const getData = async () => {
@@ -60,9 +58,9 @@ function App() {
     if (segment) {
       segment.entities.forEach((element) => {
         if (element.type === "search") {
-          setInputSearch(prev => ({...prev, value: element.value}))
+          setInputSearch(prev => ({ ...prev, value: element.value }))
         } else {
-          setInputSearch(prev => ({...prev, type: element.value}))
+          setInputSearch(prev => ({ ...prev, type: element.value }))
         }
       })
     }
@@ -71,7 +69,7 @@ function App() {
   return isLoading ?
     <div className="loading-page">
       <h3>Page is loading</h3>
-      <img src={logo} alt='logo-food' style={{width: '400px', height: '400px'}} />
+      <img src={logo} alt='logo-food' style={{ width: '400px', height: '400px' }} />
     </div>
     :
     (
@@ -125,8 +123,6 @@ function App() {
               )
             }
           </div>
-
-
         </section>
         <>
           <PushToTalkButtonContainer>
