@@ -1,10 +1,9 @@
 import "./Contact.css"
 import {HiOutlineMail} from "react-icons/hi"
 import {FaFacebookMessenger} from "react-icons/fa"
-import {BsWhatsapp} from "react-icons/bs"
 import {useRef} from 'react';
 import emailjs from "emailjs-com"
-import {Swiper, SwiperSlide} from 'swiper/react';
+
 
 
 const Contact = () => {
@@ -36,12 +35,7 @@ const Contact = () => {
             <h5></h5>
             <a href="https://m.me/zhyldyz.sultanova" target="_blank">Send a message</a>
           </article>
-          <article className='contact__option'>
-            < BsWhatsapp className='contact__option-icon' />
-            <h4>WhapsApp</h4>
-            <h5>+34697655783</h5>
-            <a href="https://api.whatsapp.com/send?phone=+34697655783" target="_blank">Send a message</a>
-          </article>
+
         </div>
         {/*END OF CONTACT OPTIONS*/}
         <form ref={form} onSubmit={sendEmail}>
